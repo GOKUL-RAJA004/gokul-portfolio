@@ -186,11 +186,10 @@ const Hero = () => {
             
             {/* Image Container */}
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-navy-900 shadow-[0_0_30px_rgba(192,38,211,0.5)]">
-              <div className="absolute inset-0 bg-gradient-to-tr from-neon-purple/20 to-transparent z-10 pointer-events-none mixing-blend-overlay"></div>
               <img 
                 src={siteConfig.profilePhoto} 
                 alt={siteConfig.name} 
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 grayscale hover:grayscale-0"
+                className="w-full h-full object-cover transform group-hover:scale-[1.02] transition-transform duration-700"
               />
             </div>
 
