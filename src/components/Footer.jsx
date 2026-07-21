@@ -1,42 +1,100 @@
-import { motion } from 'framer-motion';
-import { ArrowUp } from 'lucide-react';
-import { Link } from 'react-scroll';
-import siteConfig from '../config/siteConfig';
+import { FiGithub, FiLinkedin, FiMail, FiHeart } from 'react-icons/fi'
+import { SOCIAL_LINKS, NAV_LINKS } from '../data/constants.js'
 
-const Footer = () => {
+export default function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
-    <footer className="relative bg-navy-900 border-t border-white/5 pt-16 pb-8 overflow-hidden">
-      {/* Top glowing gradient border */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-neon-purple to-transparent opacity-50" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-neon-cyan opacity-50 shadow-[0_0_20px_rgba(34,211,238,0.8)]" />
+    <footer className="relative border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Brand */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <div
+                className="w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold text-sm"
+                style={{ background: 'var(--gradient-primary)' }}
+              >
+                G
+              </div>
+              <span
+                className="font-bold text-lg"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                <span className="gradient-text">Gokul</span>
+                <span className="text-slate-400"> Raja G</span>
+              </span>
+            </div>
+            <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+              Software Engineer & Full Stack Developer building intelligent web applications
+              with modern technologies.
+            </p>
+          </div>
 
-      <div className="section-container relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="text-center md:text-left">
-          <p className="text-white font-display font-bold text-xl tracking-wide mb-1">
-            {siteConfig.name}
-          </p>
-          <p className="text-gray-500 text-sm font-mono">
-            &copy; {new Date().getFullYear()} All Rights Reserved.
-          </p>
+          {/* Quick Links */}
+          <div>
+            <h4
+              className="text-sm font-bold text-white uppercase tracking-wider mb-4"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Quick Links
+            </h4>
+            <nav className="grid grid-cols-2 gap-2">
+              {NAV_LINKS.map(({ label, href }) => (
+                <a
+                  key={href}
+                  href={href}
+                  className="text-sm text-slate-500 hover:text-indigo-400 transition-colors"
+                >
+                  {label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Connect */}
+          <div>
+            <h4
+              className="text-sm font-bold text-white uppercase tracking-wider mb-4"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Connect
+            </h4>
+            <div className="flex gap-3">
+              {[
+                { icon: FiGithub, href: SOCIAL_LINKS.github, label: 'GitHub' },
+                { icon: FiLinkedin, href: SOCIAL_LINKS.linkedin, label: 'LinkedIn' },
+                { icon: FiMail, href: `mailto:${SOCIAL_LINKS.email}`, label: 'Email' },
+              ].map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-slate-500 hover:text-white transition-all duration-300"
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.06)',
+                  }}
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <motion.div
-          whileHover={{ y: -5 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Link
-            to="hero"
-            smooth={true}
-            offset={0}
-            duration={800}
-            className="w-12 h-12 rounded-xl cyber-glass flex items-center justify-center text-gray-400 hover:text-neon-cyan hover:border-neon-cyan/50 cursor-pointer transition-all shadow-[inset_0_0_10px_rgba(255,255,255,0.05)]"
-          >
-            <ArrowUp size={20} />
-          </Link>
-        </motion.div>
+        {/* Bottom bar */}
+        <div className="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-slate-600">
+            © {currentYear} Gokul Raja G. All rights reserved.
+          </p>
+          <p className="text-xs text-slate-600 flex items-center gap-1">
+            Built with <FiHeart size={12} className="text-red-500" /> using React & Tailwind CSS
+          </p>
+        </div>
       </div>
     </footer>
-  );
-};
-
-export default Footer;
+  )
+}

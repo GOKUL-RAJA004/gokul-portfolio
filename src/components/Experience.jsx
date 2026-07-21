@@ -1,91 +1,185 @@
-import { motion } from 'framer-motion';
-import { Briefcase } from 'lucide-react';
-import siteConfig from '../config/siteConfig';
-import ScrollReveal from './ScrollReveal';
+import { EXPERIENCE, EDUCATION, CERTIFICATIONS, RESEARCH, ACHIEVEMENTS } from '../data/constants.js'
+import { SectionReveal, FadeIn, StaggerContainer, StaggerItem } from './AnimationWrappers.jsx'
+import { FiBriefcase, FiBookOpen, FiAward, FiFileText } from 'react-icons/fi'
 
-const Experience = () => {
+function TimelineCard({ role, company, location, period, points }) {
   return (
-    <section id="experience" className="section-padding relative">
+    <div className="glass-card p-6">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+        <div>
+          <h3 className="text-lg font-bold text-white"
+            style={{ fontFamily: 'var(--font-heading)' }}>
+            {role}
+          </h3>
+          <p className="text-indigo-400 font-medium text-sm">
+            {company} · {location}
+          </p>
+        </div>
+        <span className="text-xs font-semibold text-slate-500 tracking-wider uppercase whitespace-nowrap px-3 py-1 rounded-full"
+          style={{ background: 'rgba(255,255,255,0.05)' }}>
+          {period}
+        </span>
+      </div>
+      <ul className="space-y-2">
+        {points.map((p, i) => (
+          <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
+            <span className="text-indigo-400 mt-1 shrink-0">▸</span>
+            {p}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+export default function Experience() {
+  return (
+    <section id="experience" className="relative">
       <div className="section-container">
-        {/* Section header */}
-        <ScrollReveal>
-          <div className="mb-20 text-center">
-            <h2 className="section-title">
-              Professional <span className="gradient-text">Experience</span>
-            </h2>
-            <div className="h-1 w-24 bg-gradient-to-r from-neon-purple to-neon-cyan mx-auto mt-6 rounded-full shadow-[0_0_10px_rgba(192,38,211,0.5)]" />
+        {/* Work Experience */}
+        <SectionReveal>
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center"
+              style={{ background: 'rgba(245,158,11,0.15)' }}>
+              <FiBriefcase className="text-amber-400" size={20} />
+            </div>
+            <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase">
+              Experience
+            </p>
           </div>
-        </ScrollReveal>
+          <h2 className="section-title">
+            Professional <span className="gradient-text">Journey</span>
+          </h2>
+        </SectionReveal>
 
-        <div className="relative max-w-4xl mx-auto pl-4 md:pl-0">
-          {/* Vertical Neon Line */}
-          <div className="absolute left-[39px] md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[2px] bg-white/5 shadow-[0_0_10px_rgba(255,255,255,0.1)]">
-            <motion.div
-              className="absolute top-0 w-full bg-gradient-to-b from-neon-cyan via-neon-purple to-transparent shadow-[0_0_15px_rgba(192,38,211,0.8)]"
-              animate={{ height: ['0%', '100%'] }}
-              transition={{ duration: 3, ease: 'linear', repeat: Infinity }}
-            />
+        <div className="space-y-6 mt-10">
+          {EXPERIENCE.map((exp, i) => (
+            <FadeIn key={i} delay={i * 0.15}>
+              <TimelineCard {...exp} />
+            </FadeIn>
+          ))}
+        </div>
+
+        {/* Education */}
+        <SectionReveal className="mt-20">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center"
+              style={{ background: 'rgba(34,197,94,0.15)' }}>
+              <FiBookOpen className="text-green-400" size={20} />
+            </div>
+            <p className="text-green-400 text-sm font-semibold tracking-widest uppercase">
+              Education
+            </p>
           </div>
+          <h2 className="section-title">
+            Academic <span className="gradient-text-accent">Background</span>
+          </h2>
+        </SectionReveal>
 
-          <div className="space-y-16">
-            {siteConfig.experience.map((exp, i) => {
-              const isEven = i % 2 === 0;
-              return (
-                <ScrollReveal key={i} delay={i * 0.1}>
-                  <div className={`relative flex flex-col md:flex-row gap-8 md:gap-0 ${isEven ? 'md:flex-row-reverse' : ''} items-center`}>
-                    
-                    {/* Timeline Node */}
-                    <div className="absolute left-[12px] md:left-1/2 md:-translate-x-1/2 w-14 h-14 rounded-full bg-navy-900 border-2 border-neon-purple flex items-center justify-center z-10 shadow-[0_0_20px_rgba(192,38,211,0.4)]">
-                      <Briefcase size={20} className="text-neon-cyan" />
-                      {/* Pulsing ring */}
-                      <motion.div
-                        animate={{ scale: [1, 1.5], opacity: [0.8, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="absolute inset-0 rounded-full border border-neon-purple/50"
-                      />
-                    </div>
+        <StaggerContainer className="grid md:grid-cols-3 gap-6 mt-10">
+          {EDUCATION.map((edu) => (
+            <StaggerItem key={edu.degree}>
+              <div className="glass-card p-6 h-full">
+                <span className="text-xs font-semibold text-slate-500 tracking-wider">{edu.period}</span>
+                <h3 className="text-base font-bold text-white mt-2"
+                  style={{ fontFamily: 'var(--font-heading)' }}>
+                  {edu.degree}
+                </h3>
+                <p className="text-sm text-slate-400 mt-1">{edu.institution}</p>
+                <div className="mt-3 inline-block px-3 py-1 rounded-full text-xs font-bold"
+                  style={{ background: 'rgba(99,102,241,0.12)', color: '#a5b4fc' }}>
+                  {edu.grade}
+                </div>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
 
-                    {/* Card container - Takes up half width on desktop */}
-                    <div className={`ml-16 md:ml-0 md:w-1/2 flex ${isEven ? 'md:pl-16 md:justify-start' : 'md:pr-16 md:justify-end'}`}>
-                      <motion.div
-                        whileHover={{ y: -5, scale: 1.02 }}
-                        className="cyber-glass p-6 sm:p-8 rounded-xl w-full max-w-lg border-l-4 border-l-neon-purple hover:border-l-neon-cyan transition-colors"
-                      >
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
-                          <div>
-                            <h3 className="text-xl font-display font-bold text-white mb-1 tracking-wide">
-                              {exp.role}
-                            </h3>
-                            <p className="text-neon-cyan font-medium text-sm uppercase tracking-widest">
-                              {exp.company}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="mb-6">
-                          <span className="text-xs font-mono text-gray-400 bg-white/5 px-2 py-1 rounded shadow-[inset_0_0_5px_rgba(0,0,0,0.5)] border border-white/5">
-                            {exp.period}
-                          </span>
-                        </div>
-
-                        <ul className="space-y-3">
-                          {exp.responsibilities.map((resp, j) => (
-                            <li key={j} className="flex gap-3 text-gray-400 text-sm leading-relaxed">
-                              <span className="text-neon-magenta mt-1.5 opacity-80 text-xs">▶</span>
-                              {resp}
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
+        {/* Research */}
+        <SectionReveal className="mt-20">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center"
+              style={{ background: 'rgba(236,72,153,0.15)' }}>
+              <FiFileText className="text-pink-400" size={20} />
+            </div>
+            <p className="text-pink-400 text-sm font-semibold tracking-widest uppercase">
+              Research & Conferences
+            </p>
           </div>
+          <h2 className="section-title">
+            Published <span className="gradient-text">Research</span>
+          </h2>
+        </SectionReveal>
+
+        <div className="grid md:grid-cols-2 gap-6 mt-10">
+          {RESEARCH.map((r, i) => (
+            <FadeIn key={i} delay={i * 0.15}>
+              <div className="glass-card p-6 h-full">
+                <span className="text-xs font-semibold text-indigo-400 tracking-wider">{r.date}</span>
+                <h3 className="text-base font-bold text-white mt-2"
+                  style={{ fontFamily: 'var(--font-heading)' }}>
+                  {r.title}
+                </h3>
+                <p className="text-sm text-cyan-400 mt-1">{r.venue}</p>
+                <p className="text-sm text-slate-400 mt-3 leading-relaxed">{r.description}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        {/* Certifications */}
+        <SectionReveal className="mt-20">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center"
+              style={{ background: 'rgba(99,102,241,0.15)' }}>
+              <FiAward className="text-indigo-400" size={20} />
+            </div>
+            <p className="text-indigo-400 text-sm font-semibold tracking-widest uppercase">
+              Certifications
+            </p>
+          </div>
+          <h2 className="section-title">
+            Credentials & <span className="gradient-text-accent">Achievements</span>
+          </h2>
+        </SectionReveal>
+
+        <div className="grid md:grid-cols-2 gap-6 mt-10">
+          {/* Certifications List */}
+          <FadeIn>
+            <div className="glass-card p-6">
+              <h3 className="text-lg font-bold text-white mb-4"
+                style={{ fontFamily: 'var(--font-heading)' }}>
+                Certifications
+              </h3>
+              <ul className="space-y-3">
+                {CERTIFICATIONS.map((cert, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
+                    <span className="text-indigo-400 mt-0.5 shrink-0">✦</span>
+                    {cert}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </FadeIn>
+
+          {/* Achievements List */}
+          <FadeIn delay={0.15}>
+            <div className="glass-card p-6">
+              <h3 className="text-lg font-bold text-white mb-4"
+                style={{ fontFamily: 'var(--font-heading)' }}>
+                Leadership & Achievements
+              </h3>
+              <ul className="space-y-3">
+                {ACHIEVEMENTS.map((ach, i) => (
+                  <li key={i} className="text-sm text-slate-300">
+                    {ach}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </FadeIn>
         </div>
       </div>
     </section>
-  );
-};
-
-export default Experience;
+  )
+}
