@@ -1,108 +1,150 @@
-import { motion } from 'framer-motion'
-import { FiGithub, FiExternalLink } from 'react-icons/fi'
-import { PROJECTS } from '../data/constants.js'
-import { SectionReveal, StaggerContainer, StaggerItem } from './AnimationWrappers.jsx'
-import { FiLayers } from 'react-icons/fi'
+import { motion } from 'framer-motion';
+import { ExternalLink, Code2 } from 'lucide-react';
+import { FaGithub as Github } from 'react-icons/fa';
+import siteConfig from '../config/siteConfig';
+import ScrollReveal from './ScrollReveal';
 
-function ProjectCard({ title, description, tech, highlights, type, github, live }) {
+const categoryColors = {
+  'AI / ML': { border: 'border-neon-cyan/30', tag: 'text-neon-cyan bg-neon-cyan/10 border-neon-cyan/20', hover: 'group-hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] group-hover:border-neon-cyan/60' },
+  'Full-Stack': { border: 'border-neon-purple/30', tag: 'text-neon-purple bg-neon-purple/10 border-neon-purple/20', hover: 'group-hover:shadow-[0_0_30px_rgba(192,38,211,0.2)] group-hover:border-neon-purple/60' },
+  'UI/UX Design': { border: 'border-neon-magenta/30', tag: 'text-neon-magenta bg-neon-magenta/10 border-neon-magenta/20', hover: 'group-hover:shadow-[0_0_30px_rgba(219,39,119,0.2)] group-hover:border-neon-magenta/60' },
+};
+
+const ProjectCard = ({ project, index }) => {
+  const colors = categoryColors[project.category] || categoryColors['Full-Stack'];
+
   return (
-    <motion.div
-      className="glass-card overflow-hidden group h-full flex flex-col"
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.3 }}
-    >
-      {/* Gradient top accent */}
-      <div className="h-1 w-full"
-        style={{ background: 'var(--gradient-primary)' }} />
-
-      <div className="p-6 flex flex-col flex-1">
-        {/* Badge + Title */}
-        <div className="flex items-start justify-between mb-3">
-          <div>
-            <span className="text-xs font-semibold text-indigo-400 tracking-wider uppercase">
-              {type}
-            </span>
-            <h3 className="text-xl font-bold text-white mt-1"
-              style={{ fontFamily: 'var(--font-heading)' }}>
-              {title}
-            </h3>
-          </div>
-          <div className="flex gap-2">
-            {github && (
-              <a href={github} target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-400 hover:text-white transition-colors"
-                style={{ background: 'rgba(255,255,255,0.05)' }}
-                aria-label={`View ${title} on GitHub`}>
-                <FiGithub size={16} />
-              </a>
-            )}
-            {live && (
-              <a href={live} target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg flex items-center justify-center text-slate-400 hover:text-white transition-colors"
-                style={{ background: 'rgba(255,255,255,0.05)' }}
-                aria-label={`View live demo of ${title}`}>
-                <FiExternalLink size={16} />
-              </a>
-            )}
-          </div>
+    <ScrollReveal delay={index * 0.15}>
+      <motion.div
+        whileHover={{ y: -6, scale: 1.02 }}
+        className={`cyber-glass overflow-hidden group border ${colors.border} ${colors.hover} transition-all duration-500 h-full flex flex-col rounded-xl`}
+      >
+        {/* Futuristic Image / Grid Overlay Area */}
+        <div className="relative h-48 bg-navy-900 overflow-hidden border-b border-white/5">
+          {project.image ? (
+            <>
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+              />
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-navy-900/10 opacity-70 group-hover:opacity-50 transition-opacity duration-300" />
+            </>
+          ) : (
+            <>
+              {/* Animated Grid Background */}
+              <div className="absolute inset-0 opacity-20"
+                   style={{
+                     backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+                     backgroundSize: '20px 20px',
+                   }}
+              />
+              {/* Glowing orb behind project index */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                 <div className="absolute w-32 h-32 rounded-full bg-neon-purple/20 blur-2xl group-hover:bg-neon-cyan/30 transition-colors duration-500" />
+                 <div className="text-5xl font-display font-black text-white/5 group-hover:text-white/10 transition-colors z-10 tracking-tighter">
+                    {String(index + 1).padStart(2, '0')}
+                 </div>
+              </div>
+            </>
+          )}
+          
+          {/* Scanline overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-transparent -translate-y-full group-hover:animate-scan z-20 pointer-events-none" />
         </div>
 
-        {/* Description */}
-        <p className="text-slate-400 text-sm leading-relaxed mb-4">
-          {description}
-        </p>
+        {/* Content */}
+        <div className="p-6 flex-1 flex flex-col relative z-10 bg-gradient-to-b from-black/20 to-transparent">
+          {/* Category tag */}
+          <span className={`inline-block w-fit px-3 py-1 rounded border text-xs font-mono font-semibold mb-4 tracking-wide ${colors.tag}`}>
+            {project.category}
+          </span>
 
-        {/* Highlights */}
-        <ul className="space-y-2 mb-5 flex-1">
-          {highlights.map((h, i) => (
-            <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
-              <span className="text-indigo-400 mt-1 shrink-0">▸</span>
-              {h}
-            </li>
-          ))}
-        </ul>
+          <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-neon-cyan transition-colors duration-300">
+            {project.title}
+          </h3>
 
-        {/* Tech tags */}
-        <div className="flex flex-wrap gap-2 mt-auto">
-          {tech.map((t) => (
-            <span key={t} className="tech-tag">{t}</span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  )
-}
-
-export default function Projects() {
-  return (
-    <section id="projects" className="relative">
-      <div className="section-container">
-        <SectionReveal>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-              style={{ background: 'rgba(139,92,246,0.15)' }}>
-              <FiLayers className="text-violet-400" size={20} />
-            </div>
-            <p className="text-violet-400 text-sm font-semibold tracking-widest uppercase">
-              Projects
-            </p>
-          </div>
-          <h2 className="section-title">
-            Featured <span className="gradient-text">Work</span>
-          </h2>
-          <p className="section-subtitle mt-3">
-            Real-world applications I've designed and developed — from AI navigation to smart agriculture platforms.
+          <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1">
+            {project.description}
           </p>
-        </SectionReveal>
 
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-          {PROJECTS.map((project) => (
-            <StaggerItem key={project.title}>
-              <ProjectCard {...project} />
-            </StaggerItem>
+          {/* Tech stack */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="px-2 py-1 text-xs font-mono rounded bg-white/5 text-gray-400 border border-white/10 shadow-[inset_0_0_5px_rgba(255,255,255,0.02)]"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {/* Links */}
+          <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+            {project.liveUrl && project.liveUrl !== '#' && (
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-sm font-semibold text-white hover:text-neon-cyan transition-colors"
+              >
+                <ExternalLink size={16} className="text-neon-cyan" />
+                Live Demo
+              </motion.a>
+            )}
+            {project.githubUrl && project.githubUrl !== '#' && (
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-sm font-semibold text-white hover:text-neon-purple transition-colors"
+              >
+                <Github size={16} className="text-neon-purple" />
+                Source Code
+              </motion.a>
+            )}
+            {((!project.liveUrl || project.liveUrl === '#') && (!project.githubUrl || project.githubUrl === '#')) && (
+              <span className="flex items-center gap-1.5 text-sm font-mono text-gray-500 bg-white/5 px-3 py-1 rounded">
+                <Code2 size={14} />
+                STATUS: IN DEVELOPMENT
+              </span>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </ScrollReveal>
+  );
+};
+
+const Projects = () => {
+  return (
+    <section id="projects" className="section-padding relative">
+      <div className="section-container">
+        {/* Section header */}
+        <ScrollReveal>
+          <div className="mb-16 text-center">
+             <h2 className="section-title">
+              Featured <span className="gradient-text-alt">Systems</span>
+            </h2>
+            <div className="h-1 w-24 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mt-6 rounded-full shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
+          </div>
+        </ScrollReveal>
+
+        {/* Projects grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {siteConfig.projects.map((project, i) => (
+            <ProjectCard key={i} project={project} index={i} />
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Projects;

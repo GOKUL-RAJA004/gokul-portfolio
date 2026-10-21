@@ -1,248 +1,276 @@
-import { useState, useRef } from 'react'
-import { motion } from 'framer-motion'
-import emailjs from '@emailjs/browser'
-import { FiMail, FiMapPin, FiPhone, FiSend, FiCheck, FiAlertCircle } from 'react-icons/fi'
-import { FaWhatsapp, FaLinkedinIn, FaGithub } from 'react-icons/fa'
-import { SOCIAL_LINKS, CONTACT_CONFIG } from '../data/constants.js'
-import { SectionReveal, FadeIn } from './AnimationWrappers.jsx'
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Terminal } from 'lucide-react';
+import { FaLinkedinIn, FaGithub, FaWhatsapp } from 'react-icons/fa';
+import siteConfig from '../config/siteConfig';
+import ScrollReveal from './ScrollReveal';
 
-export default function Contact() {
-  const formRef = useRef(null)
-  const [status, setStatus] = useState('idle') // idle | sending | success | error
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+const Contact = () => {
+  const [status, setStatus] = useState('');
+  const [statusMessage, setStatusMessage] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setStatus('sending')
+    e.preventDefault();
+    const form = e.target;
+    const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+
+    if (!endpoint) {
+      setStatus('error');
+      setStatusMessage('Unable to send your message. Please try again or email me directly.');
+      setTimeout(() => { setStatus(''); setStatusMessage(''); }, 5000);
+      return;
+    }
+
+    setStatus('sending');
+    setStatusMessage('');
+
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value,
+    };
 
     try {
-      if (CONTACT_CONFIG.useEmailJS) {
-        // ── EmailJS ──
-        await emailjs.sendForm(
-          CONTACT_CONFIG.emailjsServiceId,
-          CONTACT_CONFIG.emailjsTemplateId,
-          formRef.current,
-          CONTACT_CONFIG.emailjsPublicKey
-        )
-      } else {
-        // ── Formspree ──
-        const res = await fetch(`https://formspree.io/f/${CONTACT_CONFIG.formspreeId}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        })
-        if (!res.ok) throw new Error('Formspree error')
-      }
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
 
-      setStatus('success')
-      setFormData({ name: '', email: '', message: '' })
-      setTimeout(() => setStatus('idle'), 4000)
-    } catch (err) {
-      console.error('Contact form error:', err)
-      setStatus('error')
-      setTimeout(() => setStatus('idle'), 4000)
+      if (response.ok) {
+        setStatus('success');
+        setStatusMessage("Message sent successfully. I'll get back to you soon.");
+        form.reset();
+      } else {
+        setStatus('error');
+        setStatusMessage('Unable to send your message. Please try again or email me directly.');
+      }
+    } catch {
+      setStatus('error');
+      setStatusMessage('Unable to send your message. Please try again or email me directly.');
+    } finally {
+      setTimeout(() => { setStatus(''); setStatusMessage(''); }, 5000);
     }
-  }
+  };
 
   const contactInfo = [
     {
-      icon: FiMail,
+      icon: Mail,
       label: 'Email',
-      value: SOCIAL_LINKS.email,
-      href: `mailto:${SOCIAL_LINKS.email}`,
+      value: siteConfig.contact.email,
+      href: `mailto:${siteConfig.contact.email}`,
+      color: 'text-neon-cyan',
     },
     {
-      icon: FiPhone,
+      icon: Phone,
       label: 'Phone',
-      value: SOCIAL_LINKS.phone,
-      href: `tel:${SOCIAL_LINKS.phone.replace(/[^+\d]/g, '')}`,
+      value: siteConfig.contact.phone,
+      href: `tel:${siteConfig.contact.phone}`,
+      color: 'text-neon-purple',
     },
     {
-      icon: FiMapPin,
-      label: 'Location',
-      value: SOCIAL_LINKS.location,
-      href: null,
+      icon: MapPin,
+      label: 'Current Location',
+      value: siteConfig.contact.currentLocation,
+      href: '#',
+      color: 'text-neon-magenta',
     },
-  ]
+    {
+      icon: MapPin,
+      label: 'Native Place',
+      value: siteConfig.contact.nativePlace,
+      href: '#',
+      color: 'text-neon-cyan',
+    },
+  ];
 
   const socialLinks = [
-    { icon: FaLinkedinIn, href: SOCIAL_LINKS.linkedin, label: 'LinkedIn', color: '#0A66C2' },
-    { icon: FaGithub, href: SOCIAL_LINKS.github, label: 'GitHub', color: '#fff' },
-    { icon: FaWhatsapp, href: SOCIAL_LINKS.whatsapp, label: 'WhatsApp', color: '#25D366' },
-  ]
+    { icon: FaLinkedinIn, href: siteConfig.social.linkedin, color: 'text-neon-cyan', hover: 'hover:shadow-[0_0_15px_rgba(34,211,238,0.5)] border-neon-cyan/50 hover:bg-neon-cyan/10' },
+    { icon: FaGithub, href: siteConfig.social.github, color: 'text-white', hover: 'hover:shadow-[0_0_15px_rgba(255,255,255,0.5)] border-white/50 hover:bg-white/10' },
+    { icon: FaWhatsapp, href: siteConfig.social.whatsapp, color: 'text-green-400', hover: 'hover:shadow-[0_0_15px_rgba(74,222,128,0.5)] border-green-400/50 hover:bg-green-400/10' },
+  ];
 
   return (
-    <section id="contact" className="relative">
-      <div className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent)' }} />
+    <section id="contact" className="section-padding relative min-h-screen flex items-center">
+      {/* Abstract Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+         <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-neon-purple/20 rounded-full blur-[120px] animate-blob" />
+      </div>
 
-      <div className="section-container">
-        <SectionReveal>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-              style={{ background: 'rgba(99,102,241,0.15)' }}>
-              <FiMail className="text-indigo-400" size={20} />
-            </div>
-            <p className="text-indigo-400 text-sm font-semibold tracking-widest uppercase">
-              Contact
-            </p>
+      <div className="section-container relative z-10 w-full">
+        {/* Section header */}
+        <ScrollReveal>
+          <div className="mb-16 text-center">
+            <h2 className="section-title">
+              Initiate <span className="gradient-text">Connection</span>
+            </h2>
+            <div className="h-1 w-24 bg-gradient-to-r from-neon-purple to-neon-cyan mx-auto mt-6 rounded-full shadow-[0_0_10px_rgba(192,38,211,0.5)]" />
           </div>
-          <h2 className="section-title">
-            Get In <span className="gradient-text">Touch</span>
-          </h2>
-          <p className="section-subtitle mt-3">
-            Have a project in mind or want to collaborate? Let's connect and create something amazing together.
-          </p>
-        </SectionReveal>
+        </ScrollReveal>
 
-        <div className="grid lg:grid-cols-5 gap-10 mt-12">
-          {/* Left: Contact Info */}
-          <FadeIn className="lg:col-span-2 space-y-6" direction="right">
-            {/* Contact Cards */}
-            {contactInfo.map(({ icon: Icon, label, value, href }) => (
-              <div key={label} className="glass-card p-5 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
-                  style={{ background: 'rgba(99,102,241,0.12)' }}>
-                  <Icon className="text-indigo-400" size={20} />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">{label}</p>
-                  {href ? (
-                    <a href={href} className="text-sm text-slate-200 hover:text-indigo-400 transition-colors">
-                      {value}
-                    </a>
-                  ) : (
-                    <p className="text-sm text-slate-200">{value}</p>
-                  )}
-                </div>
-              </div>
-            ))}
+        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
+          {/* Contact Info & Socials */}
+          <div className="space-y-8">
+            <ScrollReveal direction="left">
+              <h3 className="text-3xl font-display font-bold text-white mb-4 tracking-tight">
+                Let's Build Something <br className="hidden sm:block" />
+                <span className="text-neon-cyan">Extraordinary.</span>
+              </h3>
+              <p className="text-gray-400 leading-relaxed mb-8 max-w-md">
+                Whether you have a question, a project proposal, or just want to say hi, my inbox is always open. I'll try my best to get back to you!
+              </p>
+            </ScrollReveal>
 
-            {/* Social Links */}
-            <div className="flex gap-3 pt-2">
-              {socialLinks.map(({ icon: Icon, href, label, color }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300 hover:scale-110"
-                  style={{
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                  }}
-                >
-                  <Icon size={20} />
-                </a>
+            <div className="space-y-6">
+              {contactInfo.map((info, i) => (
+                <ScrollReveal key={i} delay={i * 0.1} direction="left">
+                  <a
+                    href={info.href}
+                    className="flex items-center gap-5 p-4 cyber-glass rounded-xl hover:border-white/20 transition-all group"
+                  >
+                    <div className="w-12 h-12 rounded-lg bg-navy-900 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform shadow-[inset_0_0_10px_rgba(255,255,255,0.05)]">
+                      <info.icon size={20} className={`${info.color} drop-shadow-[0_0_5px_currentColor]`} />
+                    </div>
+                    <div>
+                      <div className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">{info.label}</div>
+                      <div className="text-white font-medium group-hover:text-neon-cyan transition-colors">{info.value}</div>
+                    </div>
+                  </a>
+                </ScrollReveal>
               ))}
             </div>
-          </FadeIn>
 
-          {/* Right: Contact Form */}
-          <FadeIn className="lg:col-span-3" delay={0.2} direction="left">
-            <form
-              ref={formRef}
-              onSubmit={handleSubmit}
-              className="glass-card p-6 sm:p-8 space-y-5"
-            >
-              <div className="grid sm:grid-cols-2 gap-5">
+            {/* Social Links */}
+            <ScrollReveal delay={0.3} direction="left">
+              <div className="pt-6 border-t border-white/10">
+                <div className="text-sm font-mono text-gray-500 uppercase tracking-widest mb-4">Secure Channels</div>
+                <div className="flex gap-4">
+                  {socialLinks.map((social, i) => (
+                    <motion.a
+                      key={i}
+                      whileHover={{ y: -5, scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-12 h-12 rounded-lg cyber-glass border flex items-center justify-center transition-all ${social.hover}`}
+                    >
+                      <social.icon size={20} className={`${social.color} drop-shadow-[0_0_5px_currentColor]`} />
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Contact Form */}
+          <ScrollReveal direction="right">
+            <form onSubmit={handleSubmit} className="cyber-glass p-8 rounded-2xl relative overflow-hidden group">
+              {/* Form scanning line */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent -translate-y-full group-hover:animate-scan pointer-events-none" />
+              
+              <div className="flex items-center gap-3 mb-8">
+                <Terminal size={20} className="text-neon-purple" />
+                <h3 className="text-xl font-mono text-white tracking-widest">SEND_MESSAGE.exe</h3>
+              </div>
+              
+              <div className="space-y-5">
                 <div>
-                  <label htmlFor="contact-name" className="block text-sm font-medium text-slate-400 mb-2">
-                    Your Name
+                  <label htmlFor="name" className="block text-xs font-mono text-gray-400 uppercase tracking-widest mb-2">
+                    Name
                   </label>
                   <input
-                    id="contact-name"
                     type="text"
+                    id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
-                    placeholder="John Doe"
-                    className="form-input"
+                    className="w-full bg-navy-900/80 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600
+                               focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/50 transition-all font-mono"
+                    placeholder="Enter your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="contact-email" className="block text-sm font-medium text-slate-400 mb-2">
-                    Your Email
+                  <label htmlFor="email" className="block text-xs font-mono text-gray-400 uppercase tracking-widest mb-2">
+                    Email
                   </label>
                   <input
-                    id="contact-email"
                     type="email"
+                    id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
-                    placeholder="john@example.com"
-                    className="form-input"
+                    className="w-full bg-navy-900/80 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600
+                               focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/50 transition-all font-mono"
+                    placeholder="Enter your email"
                   />
                 </div>
+                <div>
+                  <label htmlFor="message" className="block text-xs font-mono text-gray-400 uppercase tracking-widest mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows="5"
+                    className="w-full bg-navy-900/80 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600
+                               focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/50 transition-all font-mono resize-none"
+                    placeholder="Type your message here..."
+                  />
+                </div>
+
+                {/* Status message */}
+                {statusMessage && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`text-sm font-mono px-4 py-3 rounded-lg border ${
+                      status === 'success'
+                        ? 'text-green-400 bg-green-400/10 border-green-400/30'
+                        : 'text-red-400 bg-red-400/10 border-red-400/30'
+                    }`}
+                  >
+                    {statusMessage}
+                  </motion.div>
+                )}
+
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  type="submit"
+                  disabled={status === 'sending'}
+                  className="btn-primary w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed font-mono tracking-wider"
+                >
+                  {status === 'sending' ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      TRANSMITTING...
+                    </>
+                  ) : status === 'success' ? (
+                    <>
+                      <CheckCircle size={18} />
+                      TRANSMISSION SUCCESS
+                    </>
+                  ) : status === 'error' ? (
+                    <>
+                      <AlertCircle size={18} />
+                      TRANSMISSION FAILED
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} />
+                      SUBMIT
+                    </>
+                  )}
+                </motion.button>
               </div>
-
-              <div>
-                <label htmlFor="contact-message" className="block text-sm font-medium text-slate-400 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  rows={5}
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  placeholder="Tell me about your project or idea..."
-                  className="form-input resize-none"
-                />
-              </div>
-
-              <motion.button
-                type="submit"
-                disabled={status === 'sending'}
-                className="btn-primary w-full justify-center"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {status === 'idle' && (
-                  <>
-                    <FiSend size={18} />
-                    Send Message
-                  </>
-                )}
-                {status === 'sending' && (
-                  <>
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Sending...
-                  </>
-                )}
-                {status === 'success' && (
-                  <>
-                    <FiCheck size={18} />
-                    Message Sent!
-                  </>
-                )}
-                {status === 'error' && (
-                  <>
-                    <FiAlertCircle size={18} />
-                    Failed — Try Again
-                  </>
-                )}
-              </motion.button>
-
-              {/* Config hint */}
-              {CONTACT_CONFIG.formspreeId === 'YOUR_FORMSPREE_ID' && !CONTACT_CONFIG.useEmailJS && (
-                <p className="text-xs text-amber-400/60 text-center mt-2">
-                  ⚠ Configure your Formspree or EmailJS credentials in{' '}
-                  <code className="text-amber-400/80">src/data/constants.js</code>
-                </p>
-              )}
             </form>
-          </FadeIn>
+          </ScrollReveal>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Contact;

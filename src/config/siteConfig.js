@@ -6,20 +6,26 @@
 
 const siteConfig = {
   // ─── Personal Info ────────────────────────────────────────
-  name: "GOKUL RAJA G",
-  firstName: "GOKUL",
-  role: "Software Engineer | UI/UX Designer | WordPress Developer | Python Developer",
+  name: "Gokul Raja G",
+  firstName: "Gokul Raja G",
+  role: "Software Engineer | Python Developer | Full Stack Developer",
   tagline: "Building digital experiences that matter.",
 
   // ─── About ────────────────────────────────────────────────
   about: [
-    "I am a B.Tech Information Technology graduate (CGPA: 8.0, 2026) from Nehru Institute of Technology, Coimbatore, with practical experience in Python, MySQL, Flask, REST API development, and UI/UX Design using Figma.",
-    "Skilled in WordPress CMS, on-page SEO, and digital content production. Demonstrated ability to lead creative teams, manage end-to-end design workflows, and deliver peer-reviewed research at national academic conferences.",
-    "Targeting Full Stack Developer, Backend Developer, or Software Engineer positions in product-based companies, MNCs, and high-growth startups."
+    "I am an Information Technology graduate currently pursuing an MBA, with interests in software development, Python, full-stack applications, machine learning, UI/UX design, and digital solutions.",
+    "My experience also includes WordPress website management, SEO, graphic design, and creative team coordination at Lofty Agrotech. Demonstrated ability to lead creative teams, manage digital workflows, and deliver peer-reviewed research at national academic conferences.",
+    "Targeting Software Engineer, Python Developer, or Full Stack Developer positions in product-based companies, MNCs, and high-growth startups."
   ],
 
   // ─── Education ────────────────────────────────────────────
   education: [
+    {
+      degree: "MBA (Master of Business Administration)",
+      institution: "Narayanaguru College of Engineering",
+      year: "Pursuing",
+      score: "In Progress",
+    },
     {
       degree: "B.Tech — Information Technology",
       institution: "Nehru Institute of Technology, Coimbatore",
@@ -42,39 +48,38 @@ const siteConfig = {
 
   // ─── Career Objective ─────────────────────────────────────
   careerObjective:
-    "To leverage my skills in Python development, UI/UX design, and full-stack web development to build innovative, impactful digital solutions, while contributing to organizational growth and advancing my career as a Software Engineer.",
+    "To leverage my skills in Python development, full-stack web applications, machine learning, and UI/UX design to build innovative, impactful digital solutions, while contributing to organizational growth and advancing my career as a Software Engineer.",
 
   // ─── Skills ───────────────────────────────────────────────
   skills: {
-    programming: ["Python", "SQL", "Java"],
-    web: ["HTML", "WordPress", "On-Page SEO"],
+    programming: ["Python", "SQL", "Java", "JavaScript"],
+    web: ["HTML", "CSS", "Flask", "REST APIs", "WordPress", "On-Page SEO"],
     databases: ["MySQL", "PostgreSQL", "MongoDB"],
     cloud: ["AWS (DevOps on AWS)", "Git", "GitHub"],
-    design: ["Figma", "Poster Design", "Photo Editing"],
-    tools: ["VS Code", "MS Office Suite", "Antigravity"]
+    design: ["UI/UX Design", "Figma", "Poster Design", "Photo Editing"],
+    tools: ["VS Code", "MS Office Suite", "OpenCV", "Scikit-learn"]
   },
 
   // ─── Experience ───────────────────────────────────────────
   experience: [
     {
-      role: "Media Team Lead & Graphic Designer",
-      company: "Lofty Agrotech, Coimbatore",
-      period: "2024 – 2025",
+      role: "WordPress Website Operator & SEO Specialist",
+      company: "Lofty Agrotech",
+      period: "2024 – Present",
       responsibilities: [
-        "Led a multi-member creative team, enforcing brand standards and consistently delivering all design assets on schedule.",
-        "Produced high-impact marketing collateral — event posters, brochures, and digital graphics — elevating brand identity and driving measurable improvements in audience engagement.",
-        "Mentored junior designers and implemented structured creative workflows, improving team output quality and delivery consistency.",
-        "Collaborated cross-functionally with marketing and operations to ensure visual content aligned with business objectives and campaign KPIs."
+        "Managed and maintained the company website using WordPress.",
+        "Worked on website content, on-page SEO, meta tags, image alt text, and keywords.",
+        "Reviewed website analytics and website usability."
       ]
     },
     {
-      role: "WordPress Website Operator & SEO Specialist",
-      company: "Lofty Agrotech, Coimbatore",
-      period: "2024 – Present",
+      role: "Media Team Lead & Graphic Designer",
+      company: "Lofty Agrotech",
+      period: "2024 – 2025",
       responsibilities: [
-        "Managed and maintained company website, ensuring editorial accuracy and structural consistency across all web properties.",
-        "Executed comprehensive on-page SEO strategies — meta tag optimization, alt-text management, and strategic keyword integration — improving organic search visibility.",
-        "Analyzed website analytics and applied data-driven optimizations that enhanced user experience and increased average session retention."
+        "Created posters, brochures, and digital graphics.",
+        "Maintained visual brand consistency.",
+        "Coordinated creative work and collaborated with marketing and operations."
       ]
     }
   ],
@@ -82,19 +87,19 @@ const siteConfig = {
   // ─── Projects ─────────────────────────────────────────────
   projects: [
     {
-      title: "QuickPath — AI-Powered Indoor Navigation System",
+      title: "QuickPath — Smart Indoor Navigation System",
       category: "AI / ML",
-      description: "Architected an AI-powered indoor navigation system using Computer Vision and QR code detection to deliver real-time, turn-by-turn directional guidance inside large buildings. Implemented Dijkstra's Algorithm for optimal path computation, dynamically calculating the shortest navigable route between any two indoor nodes. Built a Flask-based REST API backend integrated with a responsive frontend, enabling seamless cross-platform access.",
-      techStack: ["Python", "Flask", "Computer Vision", "OpenCV", "QR Codes", "Dijkstra's Algorithm", "REST API"],
+      description: "Architected an indoor navigation system using Computer Vision and QR code detection to deliver real-time, turn-by-turn directional guidance inside large buildings. Implemented Dijkstra's Algorithm for optimal path computation, dynamically calculating the shortest navigable route between any two indoor nodes. Built a Flask-based REST API backend integrated with a responsive frontend, enabling seamless cross-platform access.",
+      techStack: ["Python", "Flask", "OpenCV", "QR codes", "Dijkstra's algorithm", "REST APIs"],
       image: "/projects/quickpath_cover.png",
       liveUrl: "#",
       githubUrl: "https://github.com/GOKUL-RAJA004",
     },
     {
-      title: "Fake News Detection — ML & NLP Web Application",
+      title: "Fake News Detection — Machine Learning Web Application",
       category: "AI / ML",
       description: "Developed an ML and NLP-powered web application classifying news articles as real or fake using TF-IDF vectorization and supervised classification models. Integrated a Flask REST API with an intuitive frontend interface enabling real-time news authenticity predictions. Achieved model accuracy improvements through iterative feature engineering and hyperparameter tuning.",
-      techStack: ["Python", "Scikit-learn", "NLP", "Flask", "TF-IDF", "Machine Learning", "REST API"],
+      techStack: ["Python", "Scikit-learn", "NLP", "TF-IDF", "Flask"],
       image: "/projects/fakenews_cover.png",
       liveUrl: "#",
       githubUrl: "https://github.com/GOKUL-RAJA004",
@@ -103,7 +108,7 @@ const siteConfig = {
       title: "AgriLink — Smart Agriculture Platform",
       category: "Full-Stack",
       description: "Designed and developed a full stack smart agriculture marketplace connecting farmers, buyers, and suppliers on a unified digital platform. Built RESTful API endpoints for product listing, order management, and real-time stakeholder communication. Implemented a MySQL relational database schema supporting multi-role user management and transactional data integrity.",
-      techStack: ["Python", "Flask", "MySQL", "REST API", "HTML5", "CSS3", "JavaScript"],
+      techStack: ["Python", "Flask", "MySQL", "REST APIs", "HTML", "CSS", "JavaScript"],
       image: "/projects/agrilink_cover.png",
       liveUrl: "#",
       githubUrl: "https://github.com/GOKUL-RAJA004",
@@ -215,11 +220,13 @@ const siteConfig = {
   contact: {
     email: "hello.gokulraja@gmail.com",
     phone: "+91-7092260100",
-    location: "Virudhunagar, Tamil Nadu",
+    currentLocation: "Coimbatore, Tamil Nadu, India",
+    nativePlace: "Virudhunagar, Tamil Nadu, India",
+    location: "Coimbatore, Tamil Nadu, India (Native: Virudhunagar)",
   },
 
   social: {
-    linkedin: "https://linkedin.com/in/gokul-raja-g-218242314",
+    linkedin: "https://www.linkedin.com/in/gokul-raja-g-218242314/",
     github: "https://github.com/GOKUL-RAJA004",
     whatsapp: "https://wa.me/917092260100",
   },
@@ -230,10 +237,10 @@ const siteConfig = {
 
   // ─── SEO & Metadata ───────────────────────────────────────
   seo: {
-    title: "GOKUL RAJA G — Software Engineer & Python Developer",
+    title: "Gokul Raja G — Software Engineer | Python Developer | Full Stack Developer",
     description:
-      "Portfolio of GOKUL RAJA G — Software Engineer, Python Developer, UI/UX Designer, and WordPress Developer.",
-    url: "https://gokulrajag.vercel.app", 
+      "Portfolio of Gokul Raja G — Software Engineer, Python Developer, and Full Stack Developer based in Coimbatore, Tamil Nadu, India.",
+    url: "https://gokul-portfolio-rho.vercel.app", 
     ogImage: "/og-image.png",
     twitterHandle: "@gokulrajag", 
   },
