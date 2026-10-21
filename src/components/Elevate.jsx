@@ -41,10 +41,10 @@ const Elevate = () => {
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-navy-900 border border-neon-cyan/30 shadow-[0_0_20px_rgba(34,211,238,0.2)] mb-6">
               <Rocket size={32} className="text-neon-cyan" />
             </div>
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6 tracking-tight">
+            <h2 className="text-2xl md:text-4xl font-display font-bold text-white mb-6 tracking-tight">
               Founder at <span className="text-neon-cyan drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">{elevate.name}</span>
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed">
+            <p className="text-gray-400 text-base leading-relaxed">
               {elevate.description}
             </p>
           </ScrollReveal>
@@ -64,10 +64,10 @@ const Elevate = () => {
                   <div className="w-14 h-14 rounded-xl bg-navy-900 border border-white/5 flex items-center justify-center mb-5 group-hover:border-neon-cyan/50 group-hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] transition-all">
                     <Icon size={24} className="text-neon-cyan drop-shadow-[0_0_5px_currentColor]" />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-neon-cyan transition-colors">
+                  <h3 className="text-base font-bold text-white mb-2 group-hover:text-neon-cyan transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <p className="text-xs text-gray-400 leading-relaxed">
                     {service.description}
                   </p>
                 </motion.div>

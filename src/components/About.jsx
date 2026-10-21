@@ -68,7 +68,7 @@ const About = () => {
           <div className="space-y-6">
             {siteConfig.about.map((paragraph, i) => (
               <ScrollReveal key={i} delay={i * 0.15}>
-                <p className="text-gray-300 leading-relaxed text-base sm:text-lg border-l-2 border-neon-cyan/30 pl-4 py-1 hover:border-neon-cyan transition-colors">
+                <p className="text-gray-300 leading-relaxed text-sm sm:text-base border-l-2 border-neon-cyan/30 pl-4 py-1 hover:border-neon-cyan transition-colors">
                   {paragraph}
                 </p>
               </ScrollReveal>
@@ -90,7 +90,7 @@ const About = () => {
                     size={28}
                     className={`mb-4 ${stat.color} filter drop-shadow-[0_0_8px_currentColor]`}
                   />
-                  <div className="text-2xl font-display font-bold text-white mb-1 tracking-tight">
+                  <div className="text-xl font-display font-bold text-white mb-1 tracking-tight">
                     {stat.value}
                   </div>
                   <div className="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-1">

@@ -110,13 +110,13 @@ const Hero = () => {
           {/* Name & Headline */}
           <motion.h1
             variants={childVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-4 tracking-tight leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 tracking-tight leading-tight"
           >
             <span className="text-white block mb-2">I am {siteConfig.firstName}.</span>
-            <span className="text-2xl sm:text-3xl md:text-4xl text-gray-300 font-light block mb-4">
+            <span className="text-xl sm:text-2xl md:text-3xl text-gray-300 font-light block mb-3">
               {siteConfig.role}
             </span>
-            <span className="gradient-text text-3xl sm:text-4xl md:text-5xl block">
+            <span className="gradient-text text-2xl sm:text-3xl md:text-4xl block">
               Building intelligent digital experiences with code and design.
             </span>
           </motion.h1>
@@ -124,7 +124,7 @@ const Hero = () => {
           {/* Tagline */}
           <motion.p
             variants={childVariants}
-            className="text-base sm:text-lg text-gray-400 mb-10 max-w-xl font-light"
+            className="text-sm sm:text-base text-gray-400 mb-8 max-w-xl font-light"
           >
             {siteConfig.tagline}
           </motion.p>

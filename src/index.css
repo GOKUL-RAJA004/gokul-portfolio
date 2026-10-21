@@ -13,6 +13,7 @@
   }
 
   html {
+    font-size: 92%;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -173,11 +174,11 @@
 
   /* Section title */
   .section-title {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4;
+    @apply text-2xl sm:text-3xl lg:text-4xl font-display font-bold mb-4;
   }
 
   .section-subtitle {
-    @apply text-gray-400 text-lg max-w-2xl;
+    @apply text-gray-400 text-base max-w-2xl;
   }
 }
 

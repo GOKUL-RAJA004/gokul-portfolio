@@ -28,7 +28,7 @@ const CareerObjective = () => {
               >
                 "
               </div>
-              <p className="text-xl sm:text-2xl md:text-3xl font-display font-light text-gray-200 leading-relaxed text-balance">
+              <p className="text-lg sm:text-xl md:text-2xl font-display font-light text-gray-200 leading-relaxed text-balance">
                 {siteConfig.careerObjective}
               </p>
             </blockquote>

@@ -115,11 +115,11 @@ const Contact = () => {
           {/* Contact Info & Socials */}
           <div className="space-y-8">
             <ScrollReveal direction="left">
-              <h3 className="text-3xl font-display font-bold text-white mb-4 tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-4 tracking-tight">
                 Let's Build Something <br className="hidden sm:block" />
                 <span className="text-neon-cyan">Extraordinary.</span>
               </h3>
-              <p className="text-gray-400 leading-relaxed mb-8 max-w-md">
+              <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-md">
                 Whether you have a question, a project proposal, or just want to say hi, my inbox is always open. I'll try my best to get back to you!
               </p>
             </ScrollReveal>
