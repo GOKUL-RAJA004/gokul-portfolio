@@ -6,24 +6,24 @@ import ScrollReveal from './ScrollReveal';
 const stats = [
   {
     icon: GraduationCap,
-    label: 'Education',
-    value: 'B.Tech IT',
-    sub: 'Graduate · Pursuing MBA',
+    label: 'Undergraduate',
+    value: 'B.Tech in IT',
+    sub: 'Nehru Institute of Tech · CGPA 8.0',
     color: 'text-neon-cyan'
   },
   {
-    icon: Award,
-    label: 'CGPA',
-    value: '8.0',
-    sub: 'Consistent Performance',
-    color: 'text-neon-magenta'
+    icon: GraduationCap,
+    label: 'Postgraduate',
+    value: 'MBA (Pursuing)',
+    sub: 'Narayanaguru College of Eng.',
+    color: 'text-neon-purple'
   },
   {
     icon: Cpu,
-    label: 'Focus',
-    value: 'Full-Stack',
-    sub: 'Python & React',
-    color: 'text-neon-purple'
+    label: 'Technical Focus',
+    value: 'Full-Stack & ML',
+    sub: 'Python, Flask, REST APIs',
+    color: 'text-neon-magenta'
   },
   {
     icon: ShieldCheck,
@@ -63,8 +63,8 @@ const About = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Text Content & Individual Education */}
           <div className="space-y-6">
             {siteConfig.about.map((paragraph, i) => (
               <ScrollReveal key={i} delay={i * 0.15}>
@@ -73,6 +73,44 @@ const About = () => {
                 </p>
               </ScrollReveal>
             ))}
+
+            {/* Individual Educational Qualifications */}
+            <ScrollReveal delay={0.45}>
+              <div className="pt-6 border-t border-white/10">
+                <h4 className="text-xs font-mono uppercase tracking-widest text-neon-cyan mb-3 flex items-center gap-2 font-semibold">
+                  <GraduationCap size={15} /> Educational Qualifications
+                </h4>
+                <div className="space-y-3">
+                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/40 transition-all group">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                      <span className="text-white font-semibold text-sm group-hover:text-neon-cyan transition-colors">
+                        B.Tech in Information Technology
+                      </span>
+                      <span className="text-xs font-mono text-neon-cyan bg-neon-cyan/10 px-2.5 py-0.5 rounded border border-neon-cyan/20 w-fit">
+                        CGPA: 8.0 / 10.0
+                      </span>
+                    </div>
+                    <div className="text-xs text-gray-400">
+                      Nehru Institute of Technology, Coimbatore · 2022 – 2026
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-neon-purple/40 transition-all group">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                      <span className="text-white font-semibold text-sm group-hover:text-neon-purple transition-colors">
+                        Master of Business Administration (MBA)
+                      </span>
+                      <span className="text-xs font-mono text-neon-purple bg-neon-purple/10 px-2.5 py-0.5 rounded border border-neon-purple/20 w-fit">
+                        Currently Pursuing
+                      </span>
+                    </div>
+                    <div className="text-xs text-gray-400">
+                      Narayanaguru College of Engineering
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
 
           {/* Stats Grid */}

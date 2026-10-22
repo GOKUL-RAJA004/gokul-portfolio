@@ -6,31 +6,31 @@
 
 const siteConfig = {
   // ─── Personal Info ────────────────────────────────────────
-  name: "Gokul Raja G",
-  firstName: "Gokul Raja G",
-  role: "Software Engineer | Python Developer | Full Stack Developer",
-  tagline: "Building digital experiences that matter.",
+  name: "GOKUL",
+  firstName: "GOKUL",
+  role: "Developer. Designer. Innovator.",
+  tagline: "Building meaningful digital solutions where technology meets creativity.",
 
   // ─── About ────────────────────────────────────────────────
   about: [
-    "I am an Information Technology graduate currently pursuing an MBA, with interests in software development, Python, full-stack applications, machine learning, UI/UX design, and digital solutions.",
-    "My experience also includes WordPress website management, SEO, graphic design, and creative team coordination at Lofty Agrotech. Demonstrated ability to lead creative teams, manage digital workflows, and deliver peer-reviewed research at national academic conferences.",
-    "Targeting Software Engineer, Python Developer, or Full Stack Developer positions in product-based companies, MNCs, and high-growth startups."
+    "I’m an Information Technology graduate currently pursuing an MBA, passionate about building innovative digital solutions that combine technology, functionality, and user-focused design.",
+    "My expertise spans Python development, full-stack applications, machine learning, UI/UX design, and web technologies. I also bring experience in WordPress website management, SEO, graphic design, and creative team coordination at Lofty Agrotech, along with a strong interest in research and innovation.",
+    "I aim to develop impactful, scalable, and user-centric solutions while continuously expanding my technical and professional capabilities. I’m seeking opportunities as a Software Engineer, Python Developer, or Full Stack Developer where I can contribute to meaningful projects, collaborate with talented teams, and grow within product-based companies, MNCs, and innovative startups."
   ],
 
   // ─── Education ────────────────────────────────────────────
   education: [
     {
-      degree: "MBA (Master of Business Administration)",
-      institution: "Narayanaguru College of Engineering",
-      year: "Pursuing",
-      score: "In Progress",
-    },
-    {
-      degree: "B.Tech — Information Technology",
+      degree: "B.Tech in Information Technology",
       institution: "Nehru Institute of Technology, Coimbatore",
       year: "2022 – 2026",
       score: "CGPA: 8.0 / 10.0",
+    },
+    {
+      degree: "Master of Business Administration (MBA) — Currently Pursuing",
+      institution: "Narayanaguru College of Engineering",
+      year: "Currently Pursuing",
+      score: "In Progress",
     },
     {
       degree: "Higher Secondary Certificate (HSC)",
@@ -53,11 +53,11 @@ const siteConfig = {
   // ─── Skills ───────────────────────────────────────────────
   skills: {
     programming: ["Python", "SQL", "Java", "JavaScript"],
-    web: ["HTML", "CSS", "Flask", "REST APIs", "WordPress", "On-Page SEO"],
-    databases: ["MySQL", "PostgreSQL", "MongoDB"],
-    cloud: ["AWS (DevOps on AWS)", "Git", "GitHub"],
+    web: ["Full-Stack Web Development", "Flask", "REST APIs", "WordPress", "SEO", "HTML", "CSS"],
+    databases: ["MySQL", "SQL", "PostgreSQL", "MongoDB"],
+    cloud: ["Git and GitHub", "AWS (DevOps on AWS)"],
     design: ["UI/UX Design", "Figma", "Poster Design", "Photo Editing"],
-    tools: ["VS Code", "MS Office Suite", "OpenCV", "Scikit-learn"]
+    tools: ["Machine Learning", "AI/ML", "Scikit-learn", "OpenCV", "VS Code", "MS Office Suite"]
   },
 
   // ─── Experience ───────────────────────────────────────────
@@ -87,75 +87,103 @@ const siteConfig = {
   // ─── Projects ─────────────────────────────────────────────
   projects: [
     {
-      title: "QuickPath — Smart Indoor Navigation System",
-      category: "AI / ML",
-      description: "Architected an indoor navigation system using Computer Vision and QR code detection to deliver real-time, turn-by-turn directional guidance inside large buildings. Implemented Dijkstra's Algorithm for optimal path computation, dynamically calculating the shortest navigable route between any two indoor nodes. Built a Flask-based REST API backend integrated with a responsive frontend, enabling seamless cross-platform access.",
-      techStack: ["Python", "Flask", "OpenCV", "QR codes", "Dijkstra's algorithm", "REST APIs"],
+      title: "LYKA ONE: Integrated Business Management Platform",
+      category: "Software Development & AI/ML Projects",
+      description: "An enterprise application concept combining two independent systems: HRMS (Employee and HR management using Flask) and SalesFlow CRM (Sales and customer relationship management). Separate databases and REST API communication, featuring business workflow validation, employee creation, and idempotent processing.",
+      techStack: ["Python", "Flask", "SQLite", "REST APIs", "Docker", "Web UI"],
+      image: "/projects/lykaone_cover.jpg",
+      liveUrl: "#",
+      githubUrl: "https://github.com/GOKUL-RAJA004",
+    },
+    {
+      title: "AI-Based Customer Intelligence and Business Decision Support System",
+      category: "Software Development & AI/ML Projects",
+      description: "An AI/ML platform for understanding customer behavior and supporting business decisions. Features customer segmentation, customer churn prediction, interactive business analytics dashboards, and data-driven decision support.",
+      techStack: ["Python", "Pandas", "scikit-learn", "XGBoost", "SQL", "React", "Flask"],
+      image: "/projects/customer_intelligence_cover.jpg",
+      liveUrl: "#",
+      githubUrl: "https://github.com/GOKUL-RAJA004",
+    },
+    {
+      title: "QuickPath: Smart Indoor Navigation System",
+      category: "Software Development & AI/ML Projects",
+      description: "A university indoor navigation concept designed to help students and visitors locate departments, classrooms, and facilities. Graph-based navigation using Dijkstra's algorithm, multi-floor route planning, Tamil-first interface and voice guidance, designed to work without GPS or an internet connection.",
+      techStack: ["Graph Algorithms", "Dijkstra's Algorithm", "Pathfinding", "Mobile-Friendly Web App", "Voice Interface"],
       image: "/projects/quickpath_cover.png",
       liveUrl: "#",
       githubUrl: "https://github.com/GOKUL-RAJA004",
     },
     {
       title: "Fake News Detection — Machine Learning Web Application",
-      category: "AI / ML",
-      description: "Developed an ML and NLP-powered web application classifying news articles as real or fake using TF-IDF vectorization and supervised classification models. Integrated a Flask REST API with an intuitive frontend interface enabling real-time news authenticity predictions. Achieved model accuracy improvements through iterative feature engineering and hyperparameter tuning.",
+      category: "Software Development & AI/ML Projects",
+      description: "Developed an ML and NLP-powered web application classifying news articles as real or fake using TF-IDF vectorization and supervised classification models. Integrated a Flask REST API with an intuitive frontend interface enabling real-time news authenticity predictions.",
       techStack: ["Python", "Scikit-learn", "NLP", "TF-IDF", "Flask"],
       image: "/projects/fakenews_cover.png",
       liveUrl: "#",
       githubUrl: "https://github.com/GOKUL-RAJA004",
     },
     {
-      title: "AgriLink — Smart Agriculture Platform",
-      category: "Full-Stack",
-      description: "Designed and developed a full stack smart agriculture marketplace connecting farmers, buyers, and suppliers on a unified digital platform. Built RESTful API endpoints for product listing, order management, and real-time stakeholder communication. Implemented a MySQL relational database schema supporting multi-role user management and transactional data integrity.",
-      techStack: ["Python", "Flask", "MySQL", "REST APIs", "HTML", "CSS", "JavaScript"],
+      title: "AI-Based IoT Flood Prediction and Real-Time Early Warning System",
+      category: "IoT & Smart Technology Projects",
+      description: "A proposed system to monitor rainfall and water levels, estimate flood risk, and send early warnings. Features ESP32-based sensor monitoring, machine-learning-based flood risk prediction, live monitoring dashboard, and alerts through notifications, siren, or communication modules.",
+      techStack: ["ESP32", "Sensors", "MQTT / REST", "Python", "Flask", "PostgreSQL", "ML", "React"],
+      image: "/projects/flood_prediction_cover.jpg",
+      liveUrl: "#",
+      githubUrl: "https://github.com/GOKUL-RAJA004",
+    },
+    {
+      title: "AgriLink: Smart Agriculture Platform",
+      category: "IoT & Smart Technology Projects",
+      description: "A digital agriculture platform concept connecting farmers with agricultural services and resources. Farm machinery rental and booking, agricultural workers and service listings, crop-related services and information, with multilingual access and voice-assisted AI.",
+      techStack: ["Python", "Flask", "MySQL", "REST APIs", "HTML", "CSS", "JavaScript", "AI-Assisted Access"],
       image: "/projects/agrilink_cover.png",
       liveUrl: "#",
       githubUrl: "https://github.com/GOKUL-RAJA004",
     },
   ],
 
-  // ─── ELEVATE Career Solutions ─────────────────────────────
-  elevate: {
-    name: "ELEVATE Career Solutions",
-    role: "Co-Founder and CEO",
+  // ─── Startup Section: VENEXA GROUP OF COMPANIES ───────────
+  startup: {
+    parent: "VENEXA GROUP OF COMPANIES",
+    name: "VENEXA GROUP OF COMPANIES",
+    role: "Founder",
     description:
-      "Founded and lead ELEVATE Career Solutions, empowering students and professionals with comprehensive career support services.",
-    services: [
+      "VENEXA GROUP OF COMPANIES is dedicated to building innovative digital solutions and empowering students and professionals through specialized enterprise technology and career development divisions.",
+    subcategories: [
       {
-        title: "College Admission Guidance",
-        description: "Expert counseling for university selection and application strategy.",
-        icon: "GraduationCap",
-      },
-      {
-        title: "Digital Marketing",
-        description: "Brand building, social media strategy, and online presence development.",
-        icon: "TrendingUp",
-      },
-      {
-        title: "Web Development",
-        description: "Custom websites and web applications tailored to business needs.",
+        title: "VENEXA TECH HUB PVT. LTD.",
+        category: "Technology & Software",
+        description:
+          "Specialized division focused on software development, digital platforms, AI integration, and innovative web technology solutions.",
         icon: "Code2",
       },
       {
-        title: "Internship Support",
-        description: "Connecting students with valuable internship opportunities.",
-        icon: "Briefcase",
+        title: "VENEXA CAREER SOLUTIONS",
+        category: "Career & Education",
+        description:
+          "Dedicated division empowering students and professionals with career counseling, skills guidance, and educational support services.",
+        icon: "GraduationCap",
+      },
+    ],
+  },
+  // Backward compatibility alias for components referencing siteConfig.elevate
+  elevate: {
+    name: "VENEXA GROUP OF COMPANIES",
+    role: "Founder",
+    description:
+      "VENEXA GROUP OF COMPANIES is dedicated to building innovative digital solutions and empowering students and professionals through specialized enterprise technology and career development divisions.",
+    services: [
+      {
+        title: "VENEXA TECH HUB PVT. LTD.",
+        description:
+          "Specialized division focused on software development, digital platforms, AI integration, and innovative web technology solutions.",
+        icon: "Code2",
       },
       {
-        title: "Resume Building",
-        description: "Professional resume crafting that stands out to recruiters.",
-        icon: "FileText",
-      },
-      {
-        title: "LinkedIn & GitHub Guidance",
-        description: "Profile optimization for maximum professional visibility.",
-        icon: "Users",
-      },
-      {
-        title: "Project Support",
-        description: "End-to-end guidance on academic and professional projects.",
-        icon: "Layers",
+        title: "VENEXA CAREER SOLUTIONS",
+        description:
+          "Dedicated division empowering students and professionals with career counseling, skills guidance, and educational support services.",
+        icon: "GraduationCap",
       },
     ],
   },
