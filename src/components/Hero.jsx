@@ -112,16 +112,19 @@ const Hero = () => {
             variants={childVariants}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 tracking-tight leading-tight"
           >
-            <span className="text-white block mb-2">Hi, I'm GOKUL.</span>
-            <span className="gradient-text text-2xl sm:text-3xl md:text-4xl font-semibold block mb-3">
-              Developer. Designer. Innovator.
+            <span className="text-white block mb-2">I am GOKUL.</span>
+            <span className="gradient-text text-2xl sm:text-3xl md:text-4xl font-semibold block mb-2">
+              Developer | Designer | Innovator.
+            </span>
+            <span className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light block mb-4">
+              B.Tech IT Graduate | MBA Candidate
             </span>
           </motion.h1>
 
           {/* Supporting Tagline */}
           <motion.p
             variants={childVariants}
-            className="text-base sm:text-lg text-gray-300 mb-8 max-w-xl font-light leading-relaxed"
+            className="text-base sm:text-lg text-gray-400 mb-8 max-w-xl font-light leading-relaxed"
           >
             Building meaningful digital solutions where technology meets creativity.
           </motion.p>

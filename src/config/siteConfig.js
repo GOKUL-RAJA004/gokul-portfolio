@@ -8,7 +8,8 @@ const siteConfig = {
   // ─── Personal Info ────────────────────────────────────────
   name: "GOKUL",
   firstName: "GOKUL",
-  role: "Developer. Designer. Innovator.",
+  role: "Developer | Designer | Innovator.",
+  subtitle: "B.Tech IT Graduate | MBA Candidate",
   tagline: "Building meaningful digital solutions where technology meets creativity.",
 
   // ─── About ────────────────────────────────────────────────
@@ -65,7 +66,7 @@ const siteConfig = {
     {
       role: "WordPress Website Operator & SEO Specialist",
       company: "Lofty Agrotech",
-      period: "2024 – Present",
+      period: "2024 – 2026",
       responsibilities: [
         "Managed and maintained the company website using WordPress.",
         "Worked on website content, on-page SEO, meta tags, image alt text, and keywords.",
@@ -96,11 +97,11 @@ const siteConfig = {
       githubUrl: "https://github.com/GOKUL-RAJA004",
     },
     {
-      title: "AI-Based Customer Intelligence and Business Decision Support System",
+      title: "Food Spoilage Detection System",
       category: "Software Development & AI/ML Projects",
-      description: "An AI/ML platform for understanding customer behavior and supporting business decisions. Features customer segmentation, customer churn prediction, interactive business analytics dashboards, and data-driven decision support.",
-      techStack: ["Python", "Pandas", "scikit-learn", "XGBoost", "SQL", "React", "Flask"],
-      image: "/projects/customer_intelligence_cover.jpg",
+      description: "An intelligent quality assessment platform designed to detect and predict food spoilage using machine learning and sensor telemetry. Analyzes freshness parameters, provides real-time spoilage indicators, and delivers automated freshness classification.",
+      techStack: ["Python", "Machine Learning", "Scikit-learn", "OpenCV", "Flask", "IoT Sensors", "REST API"],
+      image: "/projects/food_spoilage_cover.jpg",
       liveUrl: "#",
       githubUrl: "https://github.com/GOKUL-RAJA004",
     },
@@ -142,24 +143,27 @@ const siteConfig = {
     },
   ],
 
-  // ─── Startup Section: VENEXA GROUP OF COMPANIES ───────────
+  // ─── Startup Section: VANEXA GROUP OF COMPANIES ───────────
   startup: {
-    parent: "VENEXA GROUP OF COMPANIES",
-    name: "VENEXA GROUP OF COMPANIES",
+    parent: "VANEXA GROUP OF COMPANIES",
+    name: "VANEXA GROUP OF COMPANIES",
     role: "Founder",
+    website: "https://vanexatechhub.com/",
     description:
-      "VENEXA GROUP OF COMPANIES is dedicated to building innovative digital solutions and empowering students and professionals through specialized enterprise technology and career development divisions.",
+      "VANEXA GROUP OF COMPANIES is dedicated to building innovative digital solutions and empowering students and professionals through specialized enterprise technology and career development divisions.",
     subcategories: [
       {
-        title: "VENEXA TECH HUB PVT. LTD.",
+        title: "VANEXA TECH HUB PVT. LTD.",
         category: "Technology & Software",
+        website: "https://vanexatechhub.com/",
         description:
           "Specialized division focused on software development, digital platforms, AI integration, and innovative web technology solutions.",
         icon: "Code2",
       },
       {
-        title: "VENEXA CAREER SOLUTIONS",
+        title: "VANEXA CAREER SOLUTIONS",
         category: "Career & Education",
+        website: "https://vanexatechhub.com/",
         description:
           "Dedicated division empowering students and professionals with career counseling, skills guidance, and educational support services.",
         icon: "GraduationCap",
@@ -168,19 +172,22 @@ const siteConfig = {
   },
   // Backward compatibility alias for components referencing siteConfig.elevate
   elevate: {
-    name: "VENEXA GROUP OF COMPANIES",
+    name: "VANEXA GROUP OF COMPANIES",
     role: "Founder",
+    website: "https://vanexatechhub.com/",
     description:
-      "VENEXA GROUP OF COMPANIES is dedicated to building innovative digital solutions and empowering students and professionals through specialized enterprise technology and career development divisions.",
+      "VANEXA GROUP OF COMPANIES is dedicated to building innovative digital solutions and empowering students and professionals through specialized enterprise technology and career development divisions.",
     services: [
       {
-        title: "VENEXA TECH HUB PVT. LTD.",
+        title: "VANEXA TECH HUB PVT. LTD.",
+        website: "https://vanexatechhub.com/",
         description:
           "Specialized division focused on software development, digital platforms, AI integration, and innovative web technology solutions.",
         icon: "Code2",
       },
       {
-        title: "VENEXA CAREER SOLUTIONS",
+        title: "VANEXA CAREER SOLUTIONS",
+        website: "https://vanexatechhub.com/",
         description:
           "Dedicated division empowering students and professionals with career counseling, skills guidance, and educational support services.",
         icon: "GraduationCap",

@@ -7,7 +7,8 @@ import {
   FileText, 
   Users, 
   Layers,
-  Rocket
+  Rocket,
+  ExternalLink
 } from 'lucide-react';
 import siteConfig from '../config/siteConfig';
 import ScrollReveal from './ScrollReveal';
@@ -47,9 +48,22 @@ const Elevate = () => {
             <h2 className="text-2xl md:text-4xl font-display font-bold text-white mb-6 tracking-tight">
               Founder at <span className="text-neon-cyan drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">{startup.parent || startup.name}</span>
             </h2>
-            <p className="text-gray-400 text-base leading-relaxed">
+            <p className="text-gray-400 text-base leading-relaxed mb-8">
               {startup.description}
             </p>
+
+            {/* Visit Website CTA */}
+            <div className="flex justify-center">
+              <a
+                href={startup.website || "https://vanexatechhub.com/"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary inline-flex items-center gap-2 group cursor-pointer"
+              >
+                <span>Visit Website</span>
+                <ExternalLink size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
           </ScrollReveal>
         </div>
 
@@ -82,9 +96,22 @@ const Elevate = () => {
                   <h3 className="text-lg font-bold text-white mb-3 group-hover:text-neon-cyan transition-colors">
                     {sub.title}
                   </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <p className="text-sm text-gray-400 leading-relaxed mb-6">
                     {sub.description}
                   </p>
+
+                  {/* Individual Division Website Link */}
+                  {sub.website && (
+                    <a
+                      href={sub.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-bold text-white bg-white/5 border border-white/10 hover:border-neon-cyan/50 hover:bg-neon-cyan/10 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] transition-all group/btn"
+                    >
+                      <span>Visit Website</span>
+                      <ExternalLink size={14} className="text-neon-cyan group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                    </a>
+                  )}
                 </motion.div>
               </ScrollReveal>
             );
