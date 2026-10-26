@@ -64,9 +64,10 @@ const siteConfig = {
   // ─── Experience ───────────────────────────────────────────
   experience: [
     {
-      role: "WordPress Website Operator & SEO Specialist",
+      role: "WordPress Website Operator & SEO Specialist (Freelance)",
       company: "Lofty Agrotech",
       period: "2024 – 2026",
+      employmentType: "Freelance",
       responsibilities: [
         "Managed and maintained the company website using WordPress.",
         "Worked on website content, on-page SEO, meta tags, image alt text, and keywords.",
@@ -88,9 +89,9 @@ const siteConfig = {
   // ─── Projects ─────────────────────────────────────────────
   projects: [
     {
-      title: "LYKA ONE: Integrated Business Management Platform",
+      title: "LYKA ONE — Integrated Business Management Platform",
       category: "Software Development & AI/ML Projects",
-      description: "An enterprise application concept combining two independent systems: HRMS (Employee and HR management using Flask) and SalesFlow CRM (Sales and customer relationship management). Separate databases and REST API communication, featuring business workflow validation, employee creation, and idempotent processing.",
+      description: "An integrated business management platform concept combining HRMS and SalesFlow CRM, with separate databases, REST API communication, and streamlined business workflows.",
       techStack: ["Python", "Flask", "SQLite", "REST APIs", "Docker", "Web UI"],
       image: "/projects/lykaone_cover.jpg",
       liveUrl: "#",
@@ -99,44 +100,35 @@ const siteConfig = {
     {
       title: "Food Spoilage Detection System",
       category: "Software Development & AI/ML Projects",
-      description: "An intelligent quality assessment platform designed to detect and predict food spoilage using machine learning and sensor telemetry. Analyzes freshness parameters, provides real-time spoilage indicators, and delivers automated freshness classification.",
-      techStack: ["Python", "Machine Learning", "Scikit-learn", "OpenCV", "Flask", "IoT Sensors", "REST API"],
+      description: "An AI/ML-based system designed to identify potential food spoilage using image analysis and sensor data, supporting food safety and waste reduction.",
+      techStack: ["Python", "OpenCV", "TensorFlow", "Flask", "Machine Learning", "SQL"],
       image: "/projects/food_spoilage_cover.jpg",
       liveUrl: "#",
       githubUrl: "https://github.com/GOKUL-RAJA004",
     },
     {
-      title: "QuickPath: Smart Indoor Navigation System",
+      title: "QuickPath — Smart Indoor Navigation System",
       category: "Software Development & AI/ML Projects",
-      description: "A university indoor navigation concept designed to help students and visitors locate departments, classrooms, and facilities. Graph-based navigation using Dijkstra's algorithm, multi-floor route planning, Tamil-first interface and voice guidance, designed to work without GPS or an internet connection.",
-      techStack: ["Graph Algorithms", "Dijkstra's Algorithm", "Pathfinding", "Mobile-Friendly Web App", "Voice Interface"],
+      description: "A smart indoor navigation solution designed to help students and visitors find classrooms, departments, and facilities through indoor pathfinding and voice guidance.",
+      techStack: ["Graph Algorithms", "Dijkstra’s Algorithm", "Pathfinding", "Web App", "Voice Interface"],
       image: "/projects/quickpath_cover.png",
-      liveUrl: "#",
-      githubUrl: "https://github.com/GOKUL-RAJA004",
-    },
-    {
-      title: "Fake News Detection — Machine Learning Web Application",
-      category: "Software Development & AI/ML Projects",
-      description: "Developed an ML and NLP-powered web application classifying news articles as real or fake using TF-IDF vectorization and supervised classification models. Integrated a Flask REST API with an intuitive frontend interface enabling real-time news authenticity predictions.",
-      techStack: ["Python", "Scikit-learn", "NLP", "TF-IDF", "Flask"],
-      image: "/projects/fakenews_cover.png",
       liveUrl: "#",
       githubUrl: "https://github.com/GOKUL-RAJA004",
     },
     {
       title: "AI-Based IoT Flood Prediction and Real-Time Early Warning System",
       category: "IoT & Smart Technology Projects",
-      description: "A proposed system to monitor rainfall and water levels, estimate flood risk, and send early warnings. Features ESP32-based sensor monitoring, machine-learning-based flood risk prediction, live monitoring dashboard, and alerts through notifications, siren, or communication modules.",
-      techStack: ["ESP32", "Sensors", "MQTT / REST", "Python", "Flask", "PostgreSQL", "ML", "React"],
+      description: "An IoT-based concept for monitoring rainfall and water levels, estimating flood risk, and providing early warnings through sensor data and live monitoring.",
+      techStack: ["ESP32", "IoT Sensors", "MQTT/REST", "Python", "Flask", "PostgreSQL", "Machine Learning"],
       image: "/projects/flood_prediction_cover.jpg",
       liveUrl: "#",
       githubUrl: "https://github.com/GOKUL-RAJA004",
     },
     {
-      title: "AgriLink: Smart Agriculture Platform",
+      title: "AgriLink — Smart Agriculture Platform",
       category: "IoT & Smart Technology Projects",
-      description: "A digital agriculture platform concept connecting farmers with agricultural services and resources. Farm machinery rental and booking, agricultural workers and service listings, crop-related services and information, with multilingual access and voice-assisted AI.",
-      techStack: ["Python", "Flask", "MySQL", "REST APIs", "HTML", "CSS", "JavaScript", "AI-Assisted Access"],
+      description: "A digital agriculture platform concept connecting farmers with agricultural services, machinery rental, workforce resources, crop information, and multilingual assistance.",
+      techStack: ["Web Development", "Service Marketplace", "AI-Assisted Access", "Multilingual Support"],
       image: "/projects/agrilink_cover.png",
       liveUrl: "#",
       githubUrl: "https://github.com/GOKUL-RAJA004",

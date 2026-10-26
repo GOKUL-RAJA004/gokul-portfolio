@@ -61,10 +61,15 @@ const Experience = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="mb-6">
-                          <span className="text-xs font-mono text-gray-400 bg-white/5 px-2 py-1 rounded shadow-[inset_0_0_5px_rgba(0,0,0,0.5)] border border-white/5">
+                        <div className="mb-6 flex flex-wrap items-center gap-2">
+                          <span className="text-xs font-mono text-gray-400 bg-white/5 px-2.5 py-1 rounded shadow-[inset_0_0_5px_rgba(0,0,0,0.5)] border border-white/5">
                             {exp.period}
                           </span>
+                          {(exp.employmentType || exp.type) && (
+                            <span className="text-xs font-mono text-neon-cyan bg-neon-cyan/10 px-2.5 py-1 rounded border border-neon-cyan/30 font-semibold tracking-wide">
+                              {exp.employmentType || exp.type}
+                            </span>
+                          )}
                         </div>
 
                         <ul className="space-y-3">
